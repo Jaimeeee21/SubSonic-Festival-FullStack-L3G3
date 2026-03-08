@@ -14,7 +14,7 @@ window.PRODUCT_DETAIL_DATA = {
   },
   "messages": {
     "sizeRequired": "Por favor selecciona una talla",
-    "added": "âœ“ Producto agregado al carrito",
+    "added": "✓ Producto agregado al carrito",
     "notFound": "Producto no encontrado"
   }
 }

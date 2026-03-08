@@ -30,7 +30,7 @@ foreach ($jsonFile in $jsonFiles) {
     $varName = Get-DataVariableName -BaseName $baseName
     $jsPath = Join-Path $RootPath ($baseName + '-data.js')
 
-    $jsonContent = Get-Content -LiteralPath $jsonFile.FullName -Raw
+    $jsonContent = Get-Content -LiteralPath $jsonFile.FullName -Raw -Encoding UTF8
     $jsContent = "window.$varName = $jsonContent`r`n"
 
     [System.IO.File]::WriteAllText($jsPath, $jsContent, [System.Text.UTF8Encoding]::new($false))

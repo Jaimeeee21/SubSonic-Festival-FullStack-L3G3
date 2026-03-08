@@ -1,6 +1,6 @@
 window.BUSINESS_REGISTER_DATA = {
   "title": "Registro de Empresas Colaboradoras",
-  "subtitle": "Â¿Es tu empresa parte de SUBSONIC? Registrate aqui",
+  "subtitle": "¿Es tu empresa parte de SUBSONIC? Registrate aqui",
   "businessTypes": [
     { "value": "", "label": "Selecciona un tipo..." },
     { "value": "food-tracking", "label": "Food Tracking / Comida" },
