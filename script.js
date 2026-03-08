@@ -179,29 +179,44 @@ if (contactForm) {
     });
 }
 
-// ========== Notificación =========
-function showNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 20px;
-        padding: 15px 25px;
-        border-radius: 8px;
-        font-weight: bold;
-        z-index: 9999;
-        animation: slideIn 0.3s ease;
-        ${type === 'success' ? 'background: #10b981; color: white;' : 'background: #ef4444; color: white;'}
-    `;
+// ========== Notificación Toast =========
+/**
+ * Muestra una notificación toast en la esquina inferior derecha
+ * @param {string} message - Mensaje a mostrar
+ * @param {string} type - Tipo: 'success', 'error', 'warning'
+ * @param {number} duration - Duración en ms (default: 3000)
+ */
+function showToast(message, type = 'success', duration = 3000) {
+    // Crear contenedor de toasts si no existe
+    let container = document.getElementById('toastContainer');
+    if (!container) {
+        container = document.createElement('div');
+        container.id = 'toastContainer';
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+    }
     
-    document.body.appendChild(notification);
+    // Crear elemento toast
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    toast.setAttribute('role', 'alert');
     
+    // Agregar al contenedor
+    container.appendChild(toast);
+    
+    // Auto-remover después del tiempo especificado
     setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
+        toast.classList.add('hiding');
+        setTimeout(() => toast.remove(), 400);
+    }, duration);
+    
+    return toast;
+}
+
+// Mantener compatibilidad con showNotification anterior
+function showNotification(message, type) {
+    return showToast(message, type === 'error' ? 'error' : 'success');
 }
 
 // ========== Animación de Entrada a Artistas =========
@@ -397,6 +412,65 @@ const festivalInfo = {
 };
 
 console.log('Festival Info:', festivalInfo);
+
+// ========== City Dropdown Navigation =========
+/**
+ * Navega a la sección de una ciudad
+ * @param {string} city - Nombre de la ciudad (lowercase)
+ */
+function navigateToCity(city) {
+    const sectionId = city.toLowerCase().replace(/\s+/g, '');
+    
+    // Intentar ir a evento-detail.html con parámetro
+    window.location.href = `evento-detail.html?city=${city}`;
+}
+
+// Agregar event listeners a los items del dropdown
+document.addEventListener('DOMContentLoaded', () => {
+    // Para dropdown cities
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+        // Solo procesamos si está en eventos
+        if (item.closest('.dropdown') && 
+            item.closest('nav')) {
+            
+            item.addEventListener('click', (e) => {
+                const cityName = item.textContent.trim();
+                
+                // Si el item tiene un href, no hacemos nada (dejar navegación normal)
+                if (!item.href) {
+                    e.preventDefault();
+                    navigateToCity(cityName);
+                }
+            });
+        }
+    });
+    
+    // Setup calendar buttons
+    setupCalendarButtons();
+});
+
+// ========== Calendar Button Navigation =========
+function setupCalendarButtons() {
+    // Update all calendar event buttons to have proper onclick behavior
+    document.querySelectorAll('.timeline-event .btn-primary').forEach((btn, index) => {
+        // Get the event title from the timeline event
+        const eventTitle = btn.closest('.event-details')?.querySelector('h3')?.textContent || 'evento';
+        const cityName = btn.closest('.event-details')?.querySelector('.event-location')?.textContent || '';
+        
+        // Make button clickable for navigation
+        if (!btn.onclick) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Extract city name from button text or parent
+                const cleanCityName = cityName.trim() || eventTitle.split('-')[0].trim();
+                
+                // Navigate to city event page
+                window.location.href = `evento-detail.html?city=${encodeURIComponent(cleanCityName)}`;
+            });
+        }
+    });
+}
 
 // ========== Chat simplificado (Placeholder) =========
 function initializeChat() {

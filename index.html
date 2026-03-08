@@ -27,9 +27,12 @@
                 <li class="nav-item dropdown">
                     <a href="eventos.html" class="nav-link">Eventos</a>
                     <div class="dropdown-menu">
-                        <a href="eventos.html#principales" class="dropdown-item">Eventos Principales</a>
-                        <a href="eventos.html#talleres" class="dropdown-item">Talleres</a>
-                        <a href="eventos.html#afterparty" class="dropdown-item">After Parties</a>
+                        <a href="eventos.html#madrid" class="dropdown-item">Madrid</a>
+                        <a href="eventos.html#barcelona" class="dropdown-item">Barcelona</a>
+                        <a href="eventos.html#valencia" class="dropdown-item">Valencia</a>
+                        <a href="eventos.html#bilbao" class="dropdown-item">Bilbao</a>
+                        <a href="eventos.html#sevilla" class="dropdown-item">Sevilla</a>
+                        <a href="eventos.html#malaga" class="dropdown-item">Málaga</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -57,7 +60,65 @@
         <div class="events-carousel">
             <div class="carousel-container">
                 <div class="carousel-track" id="carouselTrack">
-                    <!-- Slides dinámicas desde index-data.json -->
+                    <!-- Slide 1 - Festival Overview -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Festival" class="event-img">
+                        <div class="event-overlay">
+                            <h2>SUBSONIC 2026</h2>
+                            <p class="event-date">🎵 Festival de Música</p>
+                            <p class="event-description">La experiencia musical más electrizante del año • 50,000+ Asistentes</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 - Artist Lineup -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Artistas" class="event-img">
+                        <div class="event-overlay">
+                            <h2>LINEUP MUNDIAL</h2>
+                            <p class="event-date">25+ Artistas Internacionales</p>
+                            <p class="event-description">Bandas y DJs reconocidos a nivel mundial • 4 Escenarios</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 - Festival Vibes -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Experiencia" class="event-img">
+                        <div class="event-overlay">
+                            <h2>EXPERIENCIA ÚNICA</h2>
+                            <p class="event-date">2 Días de Pura Adrenalina</p>
+                            <p class="event-description">Desde Electronic hasta Rock en la mejor producción • Talleres Incluidos</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 - Festival Community -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Comunidad" class="event-img">
+                        <div class="event-overlay">
+                            <h2>COMUNIDAD GLOBAL</h2>
+                            <p class="event-date">Personas de 40+ Países</p>
+                            <p class="event-description">Únete a la revolución musical de SUBSONIC • After Parties VIP</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 - Escenarios Premium -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Escenarios" class="event-img">
+                        <div class="event-overlay">
+                            <h2>ESCENARIOS ÉPICOS</h2>
+                            <p class="event-date">4 Escenarios Simultáneos</p>
+                            <p class="event-description">Tecnología de sonido de última generación • Producción Premium</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 - After Parties -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="After Party" class="event-img">
+                        <div class="event-overlay">
+                            <h2>NOCHES INOLVIDABLES</h2>
+                            <p class="event-date">After Parties Exclusivas</p>
+                            <p class="event-description">Ambiente VIP con DJs de renombre internacional • Experiencia de Lujo</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -77,7 +138,47 @@
             <p class="section-subtitle">Artistas Internacionales de Talla Mundial</p>
             
             <div class="artists-grid">
-                <!-- Artistas dinámicos desde index-data.json -->
+                <div class="artist-card" data-genre="Electronic">
+                    <div class="artist-image">🎙️</div>
+                    <h3>The Sonic Masters</h3>
+                    <p class="genre">Electronic / Techno</p>
+                    <p class="date">Viernes 15 - 22:00</p>
+                </div>
+
+                <div class="artist-card" data-genre="Rock">
+                    <div class="artist-image">🎸</div>
+                    <h3>Electric Horizon</h3>
+                    <p class="genre">Rock/Indie</p>
+                    <p class="date">Viernes 15 - 20:00</p>
+                </div>
+
+                <div class="artist-card" data-genre="Hip-Hop">
+                    <div class="artist-image">🎤</div>
+                    <h3>Rhythm & Beats</h3>
+                    <p class="genre">Hip-Hop / Rap</p>
+                    <p class="date">Sábado 16 - 23:00</p>
+                </div>
+
+                <div class="artist-card" data-genre="Electronic">
+                    <div class="artist-image">🎧</div>
+                    <h3>Neon Pulse</h3>
+                    <p class="genre">Synthwave / Electro</p>
+                    <p class="date">Sábado 16 - 01:00</p>
+                </div>
+
+                <div class="artist-card" data-genre="Indie">
+                    <div class="artist-image">🎹</div>
+                    <h3>Melodic Echoes</h3>
+                    <p class="genre">Indie / Alternative</p>
+                    <p class="date">Domingo 17 - 20:00</p>
+                </div>
+
+                <div class="artist-card" data-genre="House">
+                    <div class="artist-image">🎶</div>
+                    <h3>Deep Groove Collective</h3>
+                    <p class="genre">House / Funk</p>
+                    <p class="date">Domingo 17 - 23:00</p>
+                </div>
             </div>
         </div>
     </section>
@@ -88,7 +189,34 @@
             <h2>Festival Info</h2>
             
             <div class="info-grid">
-                <!-- Info dinámica desde index-data.json -->
+                <div class="info-card">
+                    <div class="info-icon">📍</div>
+                    <h3>Ubicación</h3>
+                    <p>Explanada a las afueras de la ciudad</p>
+                    <p class="small-text">Buses de ida y vuelta al festival 24/7</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🎫</div>
+                    <h3>Abonos Disponibles</h3>
+                    <p>Un Día: $45</p>
+                    <p>Pase Completo: $110</p>
+                    <p class="small-text">VIP disponible</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🏕️</div>
+                    <h3>Camping</h3>
+                    <p>Zonas de acampada</p>
+                    <p class="small-text">Baños y duchas 24/7</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">🍽️</div>
+                    <h3>Gastronomía</h3>
+                    <p>Variedad de food trucks</p>
+                    <p class="small-text">Opciones vegetarianas incluidas</p>
+                </div>
             </div>
         </div>
     </section>
@@ -98,9 +226,43 @@
         <div class="container">
             <h2>Consigue tus Entradas</h2>
             <p class="section-subtitle">Variedad de opciones para disfrutar del mejor festival</p>
-            
+             
             <div class="tickets-grid">
-                <!-- Entradas dinámicas desde index-data.json -->
+                <div class="ticket-card">
+                    <h3>Un Día</h3>
+                    <p class="price">$45</p>
+                    <ul class="ticket-features">
+                        <li>✓ Acceso a un día</li>
+                        <li>✓ Entrada general</li>
+                        <li>✓ Programa de artistas</li>
+                    </ul>
+                    <button class="ticket-button">Seleccionar Día</button>
+                </div>
+
+                <div class="ticket-card featured">
+                    <span class="badge">Más Popular</span>
+                    <h3>Pase Completo</h3>
+                    <p class="price">$110</p>
+                    <ul class="ticket-features">
+                        <li>✓ 3 días de festival</li>
+                        <li>✓ Acceso a todos los escenarios</li>
+                        <li>✓ Descuento en food</li>
+                        <li>✓ Programa VIP</li>
+                    </ul>
+                    <button class="ticket-button featured-button">Comprar Ahora</button>
+                </div>
+
+                <div class="ticket-card">
+                    <h3>VIP Premium</h3>
+                    <p class="price">$200</p>
+                    <ul class="ticket-features">
+                        <li>✓ Acceso VIP areas</li>
+                        <li>✓ Meet & Greet artistas</li>
+                        <li>✓ Catering incluido</li>
+                        <li>✓ Parking prioritario</li>
+                    </ul>
+                    <button class="ticket-button">Seleccionar Premium</button>
+                </div>
             </div>
         </div>
     </section>
@@ -139,8 +301,6 @@
         </div>
     </footer>
 
-    <script src="index-data.js"></script>
-    <script src="index-view.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle Evento - SUBSONIC Festival</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span class="logo-icon">🎵</span>
+                <span class="logo-text">SUBSONIC</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="eventos.html" class="nav-link">Volver a Eventos</a>
+                </li>
+            </ul>
+            <div class="nav-right">
+                <a href="login.html" class="user-icon">👤</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Principal del Evento -->
+    <section class="event-detail-section">
+        <div class="container">
+            <div class="event-detail-header" id="eventHeader"></div>
+            
+            <div class="event-detail-content">
+                <!-- Información del Evento -->
+                <div class="event-info-box">
+                    <h2>Información del Evento</h2>
+                    <div id="eventInfo"></div>
+                </div>
+
+                <!-- Artistas -->
+                <div class="event-artists-box">
+                    <h2>Artistas Principales</h2>
+                    <div class="artists-list" id="artistsList"></div>
+                </div>
+
+                <!-- Compra de Entradas -->
+                <div class="event-tickets-box">
+                    <h2>Compra tu Entrada</h2>
+                    <div class="tickets-grid" id="ticketsGrid"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Flotante de Contacto -->
+    <a href="faq.html" class="floating-contact-btn" title="Preguntas Frecuentes">?</a>
+
+    <script src="eventos-data.js"></script>
+    <script src="evento-detail-view.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

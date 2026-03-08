@@ -6,7 +6,7 @@ window.LOGIN_DATA = {
       { "label": "Contrasena:", "type": "password", "id": "loginPassword", "name": "password" }
     ],
     "button": "Iniciar Sesion",
-    "toggleText": "Â¿No tienes cuenta?",
+    "toggleText": "¿No tienes cuenta?",
     "toggleAction": "Crea una aqui"
   },
   "register": {
@@ -18,9 +18,9 @@ window.LOGIN_DATA = {
       { "label": "Confirmar Contrasena:", "type": "password", "id": "registerPassword2", "name": "password2" }
     ],
     "button": "Crear Cuenta",
-    "toggleText": "Â¿Ya tienes cuenta?",
+    "toggleText": "¿Ya tienes cuenta?",
     "toggleAction": "Inicia sesion",
-    "businessText": "Â¿Eres una empresa?",
+    "businessText": "¿Eres una empresa?",
     "businessLinkText": "Registrate como colaborador",
     "businessLinkHref": "business-register.html"
   }

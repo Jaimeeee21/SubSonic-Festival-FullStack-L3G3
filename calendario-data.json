@@ -1,20 +1,47 @@
 {
   "agosto": [
     {
-      "day": "14-17",
+      "day": "1-4",
       "month": "AGO",
-      "title": "SUBSONIC Madrid 2026",
-      "location": "📍 Parque Central, Madrid",
-      "description": "La experiencia musical mas electrizante del ano • 50,000+ Asistentes • 4 Escenarios",
+      "title": "SUBSONIC Sevilla 2026",
+      "location": "📍 Isla de la Cartuja, Sevilla",
+      "description": "Primera parada del festival • 35,000+ Asistentes • 3 Escenarios",
       "buttonText": "🎟️ Comprar Entradas",
       "buttonClass": "btn-primary"
     },
     {
-      "day": "21-24",
+      "day": "8-11",
+      "month": "AGO",
+      "title": "SUBSONIC Bilbao 2026",
+      "location": "📍 Abandoibarra, Bilbao",
+      "description": "Segunda parada del festival • 38,000+ Asistentes • 3 Escenarios",
+      "buttonText": "🎟️ Comprar Entradas",
+      "buttonClass": "btn-primary"
+    },
+    {
+      "day": "14-17",
+      "month": "AGO",
+      "title": "SUBSONIC Madrid 2026",
+      "location": "📍 Parque Central, Madrid",
+      "description": "Tercera parada del festival • 50,000+ Asistentes • 3 Escenarios",
+      "buttonText": "🎟️ Comprar Entradas",
+      "buttonClass": "btn-primary"
+    },
+    {
+      "day": "18-21",
+      "month": "AGO",
+      "title": "SUBSONIC Málaga 2026",
+      "location": "📍 Playa del Palo, Málaga",
+      "description": "Cuarta parada del festival • 32,000+ Asistentes • 3 Escenarios",
+      "buttonText": "🎟️ Comprar Entradas",
+      "buttonClass": "btn-primary"
+    },
+    {
+      "day": "22-25",
       "month": "AGO",
       "title": "SUBSONIC Barcelona 2026",
       "location": "📍 Montjuic, Barcelona",
-      "description": "Segunda fase del festival • 45,000+ Asistentes • Lineup exclusivo",
+      "description": "Quinta parada del festival • 45,000+ Asistentes • 3 Escenarios",
       "buttonText": "🎟️ Comprar Entradas",
       "buttonClass": "btn-primary"
     },
@@ -23,7 +50,7 @@
       "month": "AGO",
       "title": "SUBSONIC Valencia 2026",
       "location": "📍 Turia Park, Valencia",
-      "description": "Tercera fase del festival • 40,000+ Asistentes • Artistas internacionales",
+      "description": "Sexta parada del festival • 40,000+ Asistentes • 3 Escenarios",
       "buttonText": "🎟️ Comprar Entradas",
       "buttonClass": "btn-primary"
     }
