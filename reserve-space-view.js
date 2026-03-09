@@ -1,22 +1,33 @@
 let reserveSpaceData = window.RESERVE_SPACE_DATA || {};
+let availabilityData = {};
 let selectedEvent = '';
 let selectedEventName = '';
 let selectedSpace = '';
 let selectedSpaceName = '';
 
+// Obtener modo desde parámetros de URL (mock o real)
+function getDataMode() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('mode') || 'mock'; // Por defecto 'mock'
+}
+
+const dataMode = getDataMode();
+console.log('Modo de datos:', dataMode);
+
 (async function initReserveSpace() {
-    if (!reserveSpaceData.events) {
-        try {
-            const response = await fetch('reserve-space-data.json', { cache: 'no-store' });
-            if (response.ok) {
-                reserveSpaceData = await response.json();
-            }
-        } catch (error) {
-            console.error('Error al cargar reserve-space-data:', error);
-        }
+    if (dataMode === 'real') {
+        await loadFromBackend();
+    } else {
+        await loadFromMock();
     }
 
     renderEvents();
+    
+    // Inicializar disponibilidad con el primer evento
+    if (reserveSpaceData.events && reserveSpaceData.events.length > 0) {
+        updateAvailabilityForEvent(reserveSpaceData.events[0].id);
+    }
+    
     renderSpaces();
 
     const reserveForm = document.getElementById('reserveForm');
@@ -30,6 +41,141 @@ let selectedSpaceName = '';
         });
     }
 })();
+
+async function loadFromMock() {
+    console.log('Cargando datos desde MOCK (JSONs locales)...');
+    
+    // Primero intentar cargar eventos desde eventos-data.json
+    try {
+        const response = await fetch('eventos-data.json?t=' + Date.now() + Math.random(), { cache: 'no-store' });
+        if (response.ok) {
+            const eventosData = await response.json();
+            if (eventosData.principales && eventosData.principales.length > 0) {
+                // Convertir eventos al formato necesario para reserve-space
+                reserveSpaceData.events = eventosData.principales.map((evento) => {
+                    // Calcular número de días
+                    const dateParts = evento.date.split('-');
+                    const startDay = parseInt(dateParts[0]);
+                    const endDay = parseInt(dateParts[1]);
+                    const numDias = endDay - startDay + 1;
+                    const diasText = numDias === 1 ? '1 dia completo' : numDias + ' dias completos';
+                    
+                    // Colores variados para los eventos
+                    const colors = ['#6b21a8', '#00d4ff', '#ff006e', '#10b981', '#f59e0b', '#8b5cf6'];
+                    const colorIndex = eventosData.principales.indexOf(evento) % colors.length;
+                    
+                    return {
+                        id: evento.id,
+                        name: `SUBSONIC 2026 - ${evento.location}`,
+                        icon: '🎵',
+                        dates: evento.date,
+                        duration: evento.date + ' (' + diasText + ')',
+                        summary: evento.location + ' - ' + evento.description.substring(0, 60) + '...',
+                        accent: colors[colorIndex]
+                    };
+                });
+            }
+        }
+    } catch (error) {
+        console.error('Error al cargar eventos-data.json:', error);
+    }
+    
+    // Cargar espacios desde reserve-space-data.json
+    try {
+        const response = await fetch('reserve-space-data.json', { cache: 'no-store' });
+        if (response.ok) {
+            const spaceData = await response.json();
+            if (spaceData.spaces) {
+                reserveSpaceData.spaces = spaceData.spaces;
+            }
+            if (spaceData.messages) {
+                reserveSpaceData.messages = spaceData.messages;
+            }
+        }
+    } catch (error) {
+        console.error('Error al cargar reserve-space-data:', error);
+    }
+
+    // Cargar disponibilidad desde reserve-space-availability.json
+    try {
+        const response = await fetch('reserve-space-availability.json', { cache: 'no-store' });
+        if (response.ok) {
+            availabilityData = await response.json();
+        }
+    } catch (error) {
+        console.warn('Advertencia: No se pudo cargar reserve-space-availability.json, usando valores por defecto:', error);
+    }
+}
+
+async function loadFromBackend() {
+    console.log('Cargando datos desde BACKEND...');
+    
+    // TODO: Configurar los endpoints del backend según sea necesario
+    const backendUrl = 'http://localhost:3000/api'; // Cambiar por URL real del backend
+    
+    // Ejemplo de estructura esperada desde el backend:
+    // GET /api/eventos - devuelve eventos
+    // GET /api/espacios - devuelve espacios
+    // GET /api/disponibilidad - devuelve disponibilidad
+    
+    try {
+        // Cargar eventos del backend
+        const eventosResponse = await fetch(backendUrl + '/eventos', { cache: 'no-store' });
+        if (eventosResponse.ok) {
+            const eventosData = await eventosResponse.json();
+            if (eventosData.principales && eventosData.principales.length > 0) {
+                reserveSpaceData.events = eventosData.principales.map((evento) => {
+                    const dateParts = evento.date.split('-');
+                    const startDay = parseInt(dateParts[0]);
+                    const endDay = parseInt(dateParts[1]);
+                    const numDias = endDay - startDay + 1;
+                    const diasText = numDias === 1 ? '1 dia completo' : numDias + ' dias completos';
+                    
+                    const colors = ['#6b21a8', '#00d4ff', '#ff006e', '#10b981', '#f59e0b', '#8b5cf6'];
+                    const colorIndex = eventosData.principales.indexOf(evento) % colors.length;
+                    
+                    return {
+                        id: evento.id,
+                        name: `SUBSONIC 2026 - ${evento.location}`,
+                        icon: '🎵',
+                        dates: evento.date,
+                        duration: evento.date + ' (' + diasText + ')',
+                        summary: evento.location + ' - ' + evento.description.substring(0, 60) + '...',
+                        accent: colors[colorIndex]
+                    };
+                });
+            }
+        }
+    } catch (error) {
+        console.error('Error al cargar eventos del backend:', error);
+    }
+    
+    try {
+        // Cargar espacios del backend
+        const spacesResponse = await fetch(backendUrl + '/espacios', { cache: 'no-store' });
+        if (spacesResponse.ok) {
+            const spaceData = await spacesResponse.json();
+            if (spaceData.spaces) {
+                reserveSpaceData.spaces = spaceData.spaces;
+            }
+            if (spaceData.messages) {
+                reserveSpaceData.messages = spaceData.messages;
+            }
+        }
+    } catch (error) {
+        console.error('Error al cargar espacios del backend:', error);
+    }
+    
+    try {
+        // Cargar disponibilidad del backend
+        const availResponse = await fetch(backendUrl + '/disponibilidad', { cache: 'no-store' });
+        if (availResponse.ok) {
+            availabilityData = await availResponse.json();
+        }
+    } catch (error) {
+        console.warn('Advertencia: No se pudo cargar disponibilidad del backend:', error);
+    }
+}
 
 function renderEvents() {
     const eventsGrid = document.getElementById('eventsGrid');
@@ -68,12 +214,44 @@ function renderSpaces() {
     }).join('');
 }
 
+function updateAvailabilityForEvent(eventId) {
+    if (!availabilityData.availability || !availabilityData.availability[eventId]) {
+        return; // Si no hay datos de disponibilidad para este evento, mantener valores por defecto
+    }
+
+    const eventAvailability = availabilityData.availability[eventId];
+    
+    // Actualizar disponibilidad de espacios
+    (reserveSpaceData.spaces || []).forEach((space) => {
+        const availInfo = eventAvailability.find((item) => item.id === space.id);
+        if (availInfo) {
+            space.availability = availInfo.available + ' de ' + availInfo.total;
+            space.available = availInfo.available > 0;
+            
+            // Actualizar estado visual: si hay 3 o menos disponibles = pocas quedan
+            if (availInfo.available === 0) {
+                space.statusText = '✗ Agotado';
+                space.statusColor = '#ef4444';
+            } else if (availInfo.available <= 3) {
+                space.statusText = '⚠ Pocas quedan';
+                space.statusColor = '#f59e0b';
+            } else {
+                space.statusText = '✓ Disponible';
+                space.statusColor = '#10b981';
+            }
+        }
+    });
+}
+
 function selectEvent(eventId) {
     const eventData = (reserveSpaceData.events || []).find((item) => item.id === eventId);
     if (!eventData) return;
 
     selectedEvent = eventId;
     selectedEventName = eventData.name;
+
+    // Actualizar disponibilidad de espacios para el evento seleccionado
+    updateAvailabilityForEvent(eventId);
 
     document.getElementById('selectedEventName').textContent = eventData.name;
     document.getElementById('selectedEventDisplay').textContent = eventData.name;
