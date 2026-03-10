@@ -798,6 +798,94 @@ body {
     box-shadow: 0 8px 25px rgba(255, 0, 110, 0.6);
 }
 
+/* ========== Festival History Section ========== */
+.festival-history {
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.festival-history::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.festival-history::after {
+    content: '';
+    position: absolute;
+    bottom: -50%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 0, 110, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.history-content {
+    position: relative;
+    z-index: 1;
+}
+
+.history-text {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.history-text h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.history-text h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.history-text p {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.highlights-list {
+    list-style: none;
+    margin: 25px 0;
+}
+
+.highlights-list li {
+    font-size: 1rem;
+    color: #4b5563;
+    margin: 12px 0;
+    line-height: 1.8;
+}
+
+.highlights-list strong {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.closing-text {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-style: italic;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(0, 212, 255, 0.2);
+}
+
 /* ========== Footer ========== */
 .footer {
     background: var(--primary-color);
