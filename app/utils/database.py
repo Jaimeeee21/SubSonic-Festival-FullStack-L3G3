@@ -33,5 +33,5 @@ def init_db():
     firestore_db = get_firestore()
     # Crear todas las tablas
     Base.metadata.create_all(bind=engine)
-    print("✅ Firestore inicializado correctamente")
-    print("✅ SQLAlchemy inicializado correctamente")
+    print("[OK] Firestore inicializado correctamente")
+    print("[OK] SQLAlchemy inicializado correctamente")

@@ -7,7 +7,7 @@ from pathlib import Path
 import os
 
 # Obtener ruta del archivo de credenciales
-CREDS_PATH = Path(__file__).parent.parent.parent / "subsonic-festival-56216-3767f772323c.json"
+CREDS_PATH = Path(__file__).parent.parent.parent / "subsonic-festival-56216-firebase-adminsdk-fbsvc-fa73f8c742.json"
 
 # Variable global para almacenar la instancia
 _firebase_app = None

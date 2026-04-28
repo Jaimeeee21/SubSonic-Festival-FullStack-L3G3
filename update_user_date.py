@@ -7,7 +7,7 @@ from pathlib import Path
 from datetime import datetime
 
 # Inicializar Firebase
-creds_path = Path(__file__).parent / "subsonic-festival-56216-3767f772323c.json"
+creds_path = Path(__file__).parent / "subsonic-festival-56216-firebase-adminsdk-fbsvc-fa73f8c742.json"
 
 if not firebase_admin._apps:
     cred = credentials.Certificate(str(creds_path))

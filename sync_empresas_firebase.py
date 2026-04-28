@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 
 # Inicializar Firebase
-cred_path = Path(__file__).parent / "subsonic-festival-56216-3767f772323c.json"
+cred_path = Path(__file__).parent / "subsonic-festival-56216-firebase-adminsdk-fbsvc-fa73f8c742.json"
 print(f"🔍 Buscando credenciales en: {cred_path}")
 
 if not cred_path.exists():

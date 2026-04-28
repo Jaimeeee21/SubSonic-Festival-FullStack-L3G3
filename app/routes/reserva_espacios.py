@@ -14,6 +14,47 @@ import uuid
 router = APIRouter(prefix="/api/reservas-espacios", tags=["Reserva de Espacios"])
 
 
+@router.get("/test/conexion")
+def test_conexion():
+    """
+    Endpoint de prueba para verificar conexión a Firestore
+    """
+    try:
+        firestore_db = get_firestore()
+        
+        # Intentar escribir un documento de prueba
+        test_doc = {
+            'test': True,
+            'timestamp': datetime.utcnow().isoformat(),
+            'mensaje': 'Esto es una prueba de conexión'
+        }
+        
+        firestore_db.collection('_test').document('test-doc').set(test_doc)
+        
+        # Intentar leer el documento
+        doc = firestore_db.collection('_test').document('test-doc').get()
+        
+        if doc.exists:
+            print("✅ Conexión a Firestore: OK")
+            return {
+                "success": True,
+                "message": "Conexión a Firestore exitosa",
+                "data": doc.to_dict()
+            }
+        else:
+            return {
+                "success": False,
+                "message": "Documento no encontrado después de escribir"
+            }
+            
+    except Exception as e:
+        print(f"❌ Error en test_conexion: {str(e)}")
+        return {
+            "success": False,
+            "error": str(e)
+        }
+
+
 class CrearReservaRequest(BaseModel):
     """Schema para crear reserva de espacio"""
     evento_id: str
