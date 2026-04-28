@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Empresa - SUBSONIC Festival</title>
+    <script src="config.js"></script>
+    <script src="cookie-manager.js"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span class="logo-icon">🎵</span>
+                <span class="logo-text">SUBSONIC</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item dropdown">
+                    <a href="calendario.html" class="nav-link">Calendario</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="eventos.html" class="nav-link">Eventos</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="merch.html" class="nav-link merchandising-btn">Merch</a>
+                </li>
+            </ul>
+            <div class="nav-right">
+                <a href="login.html" class="user-icon" title="Iniciar sesion">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M 12 14 C 7.58 14 4 15.79 4 18.5 V 22 H 20 V 18.5 C 20 15.79 16.42 14 12 14 Z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de Login de Empresa -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div id="businessLoginRoot"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>SUBSONIC Festival</h4>
+                    <p>La mejor experiencia musical del año</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#lineup">Lineup</a></li>
+                        <li><a href="index.html#info">Información</a></li>
+                        <li><a href="index.html#entradas">Entradas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">i</a>
+                        <a href="#" class="social-icon">X</a>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-copy">© 2026 SUBSONIC Festival. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="faq.html" class="help-btn">?</a>
+
+    <script src="navbar-manager.js"></script>
+    <script src="business-login-view.js"></script>
+</body>
+</html>

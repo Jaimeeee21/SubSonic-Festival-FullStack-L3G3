@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBSONIC Festival - Experiencia de Sonido Única</title>
+    <script src="config.js"></script>
+    <script src="cookie-manager.js"></script>
+    <script src="auth-manager.js?v=8"></script>
+    <script src="navbar-manager.js?v=9"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#inicio" class="navbar-logo">
+                <span class="logo-icon">🎵</span>
+                <span class="logo-text">SUBSONIC</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item dropdown">
+                    <a href="calendario.html" class="nav-link">Calendario</a>
+                    <div class="dropdown-menu">
+                        <a href="calendario.html#agosto" class="dropdown-item">Agosto 2026</a>
+                        <a href="calendario.html#pasado" class="dropdown-item">Ediciones Anteriores</a>
+                        <a href="calendario.html#proximas" class="dropdown-item">Próximos Festivales</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="eventos.html" class="nav-link">Eventos</a>
+                    <div class="dropdown-menu">
+                        <a href="evento-detail.html?id=madrid" class="dropdown-item">Madrid</a>
+                        <a href="evento-detail.html?id=barcelona" class="dropdown-item">Barcelona</a>
+                        <a href="evento-detail.html?id=valencia" class="dropdown-item">Valencia</a>
+                        <a href="evento-detail.html?id=bilbao" class="dropdown-item">Bilbao</a>
+                        <a href="evento-detail.html?id=sevilla" class="dropdown-item">Sevilla</a>
+                        <a href="evento-detail.html?id=malaga" class="dropdown-item">Málaga</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="merch.html" class="nav-link merchandising-btn">Merch</a>
+                    <div class="dropdown-menu">
+                        <a href="merch.html#ropa" class="dropdown-item">Ropa</a>
+                        <a href="merch.html#accesorios" class="dropdown-item">Accesorios</a>
+                        <a href="merch.html#edicion-limitada" class="dropdown-item">Edición Limitada</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-right">
+                <a href="login.html" class="user-icon" title="Iniciar sesion">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M 12 14 C 7.58 14 4 15.79 4 18.5 V 22 H 20 V 18.5 C 20 15.79 16.42 14 12 14 Z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección Hero - Carrusel de Eventos -->
+    <section class="hero" id="inicio">
+        <div class="events-carousel">
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Slide 1 - Festival Overview -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Festival" class="event-img">
+                        <div class="event-overlay">
+                            <h2>SUBSONIC 2026</h2>
+                            <p class="event-date">🎵 Festival de Música</p>
+                            <p class="event-description">La experiencia musical más electrizante del año • 50,000+ Asistentes</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 - Artist Lineup -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Artistas" class="event-img">
+                        <div class="event-overlay">
+                            <h2>LINEUP MUNDIAL</h2>
+                            <p class="event-date">25+ Artistas Internacionales</p>
+                            <p class="event-description">Bandas y DJs reconocidos a nivel mundial • 4 Escenarios</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 - Festival Vibes -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Experiencia" class="event-img">
+                        <div class="event-overlay">
+                            <h2>EXPERIENCIA ÚNICA</h2>
+                            <p class="event-date">2 Días de Pura Adrenalina</p>
+                            <p class="event-description">Desde Electronic hasta Rock en la mejor producción • Talleres Incluidos</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 - Festival Community -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Comunidad" class="event-img">
+                        <div class="event-overlay">
+                            <h2>COMUNIDAD GLOBAL</h2>
+                            <p class="event-date">Personas de 40+ Países</p>
+                            <p class="event-description">Únete a la revolución musical de SUBSONIC • After Parties VIP</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 5 - Escenarios Premium -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Escenarios" class="event-img">
+                        <div class="event-overlay">
+                            <h2>ESCENARIOS ÉPICOS</h2>
+                            <p class="event-date">4 Escenarios Simultáneos</p>
+                            <p class="event-description">Tecnología de sonido de última generación • Producción Premium</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 6 - After Parties -->
+                    <div class="event-card">
+                        <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="After Party" class="event-img">
+                        <div class="event-overlay">
+                            <h2>NOCHES INOLVIDABLES</h2>
+                            <p class="event-date">After Parties Exclusivas</p>
+                            <p class="event-description">Ambiente VIP con DJs de renombre internacional • Experiencia de Lujo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de navegación -->
+            <button class="carousel-btn carousel-btn-prev" onclick="moveCarousel(-1)">❮</button>
+            <button class="carousel-btn carousel-btn-next" onclick="moveCarousel(1)">❯</button>
+
+            <!-- Indicadores -->
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <!-- Sección Historia del Festival -->
+    <section class="festival-history" id="historia">
+        <div class="container">
+            <div class="history-content">
+                <div class="history-text">
+                    <h2>Bienvenido a SUBSONIC</h2>
+                    <p>SUBSONIC Festival es más que un evento musical; es una experiencia transformadora que reúne a amantes de la música de todo el mundo. Desde nuestros humildes comienzos hace más de una década, hemos crecido hasta convertirse en uno de los festivales de música más icónicos de Europa.</p>
+                    
+                    <h3>Nuestra Misión</h3>
+                    <p>Nos dedicamos a crear moments inolvidables donde los artistas y el público se conectan a través de la música. Cada edición de SUBSONIC representa un compromiso con la excelencia, la innovación y la diversidad cultural.</p>
+                    
+                    <h3>Destacados</h3>
+                    <ul class="highlights-list">
+                        <li>✓ <strong>50,000+</strong> asistentes de 40+ países</li>
+                        <li>✓ <strong>25+ artistas</strong> internacionales en 3 escenarios</li>
+                        <li>✓ <strong>3 días</strong> de experiencia musical inmersiva</li>
+                        <li>✓ <strong>Producción de clase mundial</strong> con tecnología de punta</li>
+                    </ul>
+                    
+                    <p class="closing-text">SUBSONIC es donde comienza la música, donde se crea la comunidad y donde los recuerdos duran toda la vida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Flotante de Contacto -->
+    <a href="faq.html" class="floating-contact-btn" title="Preguntas Frecuentes">?</a>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>SUBSONIC Festival</h4>
+                    <p>La mejor experiencia musical del año</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#historia">Historia</a></li>
+                        <li><a href="eventos.html">Eventos</a></li>
+                        <li><a href="calendario.html">Calendario</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" title="X"><span class="social-icon-x-wrapper"><svg class="social-icon-x" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.75-5.913 6.75h-3.308l7.73-8.835L.424 2.25h6.76l4.673 6.169L17.671 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SUBSONIC Festival. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>

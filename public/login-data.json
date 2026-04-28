@@ -1,0 +1,27 @@
+{
+  "login": {
+    "title": "Iniciar Sesion",
+    "fields": [
+      { "label": "Correo Electronico:", "type": "email", "id": "loginEmail", "name": "email" },
+      { "label": "Contrasena:", "type": "password", "id": "loginPassword", "name": "password" }
+    ],
+    "button": "Iniciar Sesion",
+    "toggleText": "¿No tienes cuenta?",
+    "toggleAction": "Crea una aqui"
+  },
+  "register": {
+    "title": "Crear Cuenta",
+    "fields": [
+      { "label": "Nombre Completo:", "type": "text", "id": "registerName", "name": "name" },
+      { "label": "Correo Electronico:", "type": "email", "id": "registerEmail", "name": "email" },
+      { "label": "Contrasena:", "type": "password", "id": "registerPassword", "name": "password" },
+      { "label": "Confirmar Contrasena:", "type": "password", "id": "registerPassword2", "name": "password2" }
+    ],
+    "button": "Crear Cuenta",
+    "toggleText": "¿Ya tienes cuenta?",
+    "toggleAction": "Inicia sesion",
+    "businessText": "¿Eres una empresa?",
+    "businessLinkText": "Registrate como colaborador",
+    "businessLinkHref": "business-register.html"
+  }
+}

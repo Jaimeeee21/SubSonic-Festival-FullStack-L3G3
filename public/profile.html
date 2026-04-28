@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil - SUBSONIC Festival</title>
+    <script src="config.js"></script>    <script src="cookie-manager.js"></script>    <script src="auth-manager.js?v=9"></script>
+    <script src="navbar-manager.js?v=9"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span class="logo-icon">🎵</span>
+                <span class="logo-text">SUBSONIC</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item dropdown">
+                    <a href="calendario.html" class="nav-link">Calendario</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="eventos.html" class="nav-link">Eventos</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="merch.html" class="nav-link merchandising-btn">Merch</a>
+                </li>
+            </ul>
+            <div class="nav-right">
+                <!-- Navbar dinámicamente actualizada por navbar-manager.js -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <div class="profile-container">
+        <!-- Sección de Perfil -->
+        <div class="profile-section">
+            <!-- Información del Usuario -->
+            <div class="profile-info-section">
+                <div class="profile-header">
+                    <h1 id="userName">Nombre del Usuario</h1>
+                    <p id="userEmail" class="user-email">email@example.com</p>
+                </div>
+
+                <!-- Datos Básicos -->
+                <div class="profile-details">
+                    <div class="detail-item">
+                        <label>Teléfono:</label>
+                        <span id="userPhone">No especificado</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Ciudad:</label>
+                        <span id="userCity">No especificado</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Miembro desde:</label>
+                        <span id="userDate">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <label>Tipo de Usuario:</label>
+                        <span id="userType">Individual</span>
+                    </div>
+                </div>
+
+                <!-- Biografía -->
+                <div class="profile-bio">
+                    <label>Biografía:</label>
+                    <p id="userBio">Sin información adicional</p>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="profile-actions">
+                    <button id="editProfileBtn" class="btn-primary">
+                        <i class="fas fa-edit"></i> Editar Perfil
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Entradas Compradas -->
+        <div class="tickets-section">
+            <h2>
+                <i class="fas fa-ticket-alt"></i> Mis Entradas Compradas
+            </h2>
+
+            <div id="ticketsContainer" class="tickets-grid">
+                <!-- Las entradas se cargarán aquí -->
+            </div>
+
+            <div id="noTicketsMessage" class="no-tickets-message">
+                <i class="fas fa-inbox"></i>
+                <h3>No tienes entradas compradas</h3>
+                <p>Compra entradas para los eventos de SUBSONIC Festival</p>
+                <a href="eventos.html" class="btn-secondary">Ver Eventos</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edición de Perfil -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Editar Perfil</h2>
+            
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="editName">Nombre:</label>
+                    <input type="text" id="editName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="editPhone">Teléfono:</label>
+                    <input type="tel" id="editPhone">
+                </div>
+
+                <div class="form-group">
+                    <label for="editCity">Ciudad:</label>
+                    <input type="text" id="editCity">
+                </div>
+
+                <div class="form-group">
+                    <label for="editBio">Biografía:</label>
+                    <textarea id="editBio" rows="4"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Guardar Cambios</button>
+                    <button type="button" class="btn-secondary" id="cancelEditBtn">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js?v=9"></script>
+    <script src="auth-manager.js?v=9"></script>
+    <script src="purchase-manager.js?v=9"></script>
+    <script src="profile-data.js?v=13"></script>
+    <script src="profile-view.js?v=13"></script>
+</body>
+</html>

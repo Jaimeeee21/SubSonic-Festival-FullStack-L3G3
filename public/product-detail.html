@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de Producto - SUBSONIC Festival</title>
+    <script src="config.js"></script>
+    <script src="auth-manager.js?v=8"></script>
+    <script src="navbar-manager.js?v=9"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span class="logo-icon">🎵</span>
+                <span class="logo-text">SUBSONIC</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item dropdown">
+                    <a href="calendario.html" class="nav-link">Calendario</a>
+                    <div class="dropdown-menu">
+                        <a href="calendario.html#agosto" class="dropdown-item">Agosto 2026</a>
+                        <a href="calendario.html#pasado" class="dropdown-item">Ediciones Anteriores</a>
+                        <a href="calendario.html#proximas" class="dropdown-item">Próximos Festivales</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="eventos.html" class="nav-link">Eventos</a>
+                    <div class="dropdown-menu">
+                        <a href="evento-detail.html?id=madrid" class="dropdown-item">Madrid</a>
+                        <a href="evento-detail.html?id=barcelona" class="dropdown-item">Barcelona</a>
+                        <a href="evento-detail.html?id=valencia" class="dropdown-item">Valencia</a>
+                        <a href="evento-detail.html?id=bilbao" class="dropdown-item">Bilbao</a>
+                        <a href="evento-detail.html?id=sevilla" class="dropdown-item">Sevilla</a>
+                        <a href="evento-detail.html?id=malaga" class="dropdown-item">Málaga</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="merch.html" class="nav-link merchandising-btn">Merch</a>
+                    <div class="dropdown-menu">
+                        <a href="merch.html#ropa" class="dropdown-item">Ropa</a>
+                        <a href="merch.html#accesorios" class="dropdown-item">Accesorios</a>
+                        <a href="merch.html#edicion-limitada" class="dropdown-item">Edición Limitada</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-right">
+                <button id="cartBtn" class="cart-btn" onclick="window.location.href='cart.html'">
+                    🛒 <span id="cartCount" class="cart-count">0</span>
+                </button>
+                <a href="login.html" class="user-icon" title="Iniciar sesion">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M 12 14 C 7.58 14 4 15.79 4 18.5 V 22 H 20 V 18.5 C 20 15.79 16.42 14 12 14 Z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de Detalle de Producto -->
+    <section class="product-detail-section">
+        <div class="container">
+            <a href="merch.html" class="back-link">← Volver a Merch</a>
+            
+            <div class="product-detail-wrapper">
+                <!-- Imagen del Producto -->
+                <div class="product-image-container">
+                    <img id="productImage" src="" alt="Producto" class="product-image-main">
+                    <div class="product-colors-preview">
+                        <p>Selecciona un color:</p>
+                        <div id="colorOptions" class="color-options">
+                            <!-- Se genera dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Información del Producto -->
+                <div class="product-info">
+                    <h1 id="productName"></h1>
+                    <p id="productDesc" class="product-description"></p>
+                    <p id="productPrice" class="product-price"></p>
+
+                    <div class="product-options">
+                        <!-- Selección de Talla (solo para ropa) -->
+                        <div id="sizeGroup" class="option-group" style="display: none;">
+                            <label>Talla:</label>
+                            <select id="sizeSelector" class="size-selector">
+                                <option value="">Selecciona una talla</option>
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+                            </select>
+                            <div id="sizeError" class="error-message" style="display: none;">
+                                Por favor selecciona una talla
+                            </div>
+                        </div>
+
+                        <!-- Cantidad -->
+                        <div class="option-group">
+                            <label>Cantidad:</label>
+                            <div class="quantity-selector">
+                                <button id="decreaseQty" class="qty-btn">-</button>
+                                <input id="quantity" type="number" value="1" min="1" max="10">
+                                <button id="increaseQty" class="qty-btn">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón Agregar al Carrito -->
+                    <button id="addToCartBtn" class="btn-primary large">Agregar al Carrito</button>
+                    
+                    <!-- Mensaje de confirmación -->
+                    <div id="confirmationMessage" class="confirmation-message" style="display: none;">
+                        ✓ Producto agregado al carrito
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Flotante de Contacto -->
+    <a href="faq.html" class="floating-contact-btn" title="Preguntas Frecuentes">?</a>
+
+    <script src="product-detail-data.js"></script>
+    <script src="product-detail-view.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

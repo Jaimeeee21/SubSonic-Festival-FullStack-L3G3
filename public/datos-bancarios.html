@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Bancarios - SUBSONIC</title>
+    <script src="config.js"></script>
+    <script src="auth-manager.js"></script>
+    <script src="purchase-manager.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .checkout-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 2rem;
+            background: rgba(30, 30, 40, 0.9);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: white;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #00f0ff;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background: #222;
+            color: white;
+        }
+        .btn-checkout {
+            width: 100%;
+            padding: 15px;
+            background: #ff006e;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-checkout:hover {
+            background: #d9005d;
+        }
+        .summary-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <h2>Pasarela de Pago Segura</h2>
+        <div class="summary-box">
+            <h3 id="itemName">Cargando...</h3>
+            <p id="eventTitle" style="color: #ccc; margin-top: 5px; font-size: 0.9rem;">Evento</p>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 15px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <label style="color: white; font-weight: bold;">Cantidad:</label>
+                    <input type="number" id="ticketQuantity" value="1" min="1" max="10" style="width: 60px; padding: 5px; border-radius: 5px; border: 1px solid #00f0ff; background: transparent; color: white; text-align: center;" onchange="updateTotal()" oninput="updateTotal()">
+                </div>
+                <p id="itemPrice" style="font-size: 1.8rem; color: #00f0ff; font-weight: bold; margin: 0;">$0.00</p>
+            </div>
+        </div>
+
+        <form id="paymentForm" onsubmit="procesarPago(event)">
+            <div class="form-group">
+                <label>Nombre en la Tarjeta</label>
+                <input type="text" required placeholder="Ej. Juan Pérez">
+            </div>
+            <div class="form-group">
+                <label>Número de Tarjeta</label>
+                <input type="text" required pattern="\d{16}" title="16 dígitos numéricos" placeholder="1234 5678 1234 5678">
+            </div>
+            <div class="form-group" style="display: flex; gap: 15px;">
+                <div style="flex: 1;">
+                    <label>Fecha de Expiración</label>
+                    <input type="text" required placeholder="MM/AA">
+                </div>
+                <div style="flex: 1;">
+                    <label>CVV / CVC</label>
+                    <input type="text" required pattern="\d{3,4}" title="3 o 4 dígitos de seguridad" placeholder="123">
+                </div>
+            </div>
+            <button type="submit" class="btn-checkout">Confirmar y Pagar</button>
+        </form>
+    </div>
+
+    <script>
+        let basePrice = 0;
+        let ticketName = "Entrada Desconocida";
+        let eventName = "SUBSONIC Festival";
+        let eventCity = "Ubicación Pendiente";
+        let eventDate = "";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const item = params.get('item');
+            const price = params.get('price');
+            const event = params.get('evento');
+            const ciudad = params.get('ciudad');
+            const fecha = params.get('fecha');
+            
+            if(fecha && fecha !== "undefined") {
+                eventDate = fecha;
+            }
+
+            if(item) {
+                ticketName = item;
+                document.getElementById('itemName').textContent = ticketName;
+            }
+            if(event) {
+                eventName = event;
+                if(ciudad && ciudad !== "undefined") {
+                    eventCity = ciudad;
+                    document.getElementById('eventTitle').textContent = `Evento: ${eventName} - ${eventCity}`;
+                } else {
+                    document.getElementById('eventTitle').textContent = "Evento: " + eventName;
+                }
+            }
+            if(price) {
+                basePrice = parseFloat(price.replace('$', '')) || 0;
+            }
+            updateTotal();
+
+            // Redirect if not logged in
+            if (window.authManager && !window.authManager.getUser()) {
+                window.location.href = 'login.html';
+            }
+        });
+
+        function updateTotal() {
+            const qty = parseInt(document.getElementById('ticketQuantity').value) || 1;
+            const total = basePrice * qty;
+            document.getElementById('itemPrice').textContent = "$" + total.toFixed(2);
+        }
+
+        async function procesarPago(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.textContent;
+            btn.textContent = 'Procesando...';
+            btn.disabled = true;
+
+            const qty = parseInt(document.getElementById('ticketQuantity').value) || 1;
+            const total = basePrice * qty;
+
+            const entrada = {
+                evento_nombre: eventName,
+                evento_ciudad: eventCity,
+                fecha_evento: eventDate,
+                tipo_entrada: ticketName,
+                evento_id: eventName.replace(/\s+/g, '-').toLowerCase() + '-' + eventCity.toLowerCase(),
+                cantidad_entradas: qty,
+                precio_total: total,
+                estado: "confirmada",
+                fecha_compra: new Date().toISOString()
+            };
+
+            try {
+                // 'purchaseManager' se define con 'const' en purchase-manager.js, por lo que no se anexa a 'window'
+                if (typeof purchaseManager !== 'undefined') {
+                    await purchaseManager.guardarEntradaComprada(entrada);
+                    alert(`¡Pago procesado con éxito! Has comprado ${qty} entradas. Recibirás todo por correo.`);
+                    window.location.href = 'profile.html';
+                } else {
+                    alert('Error: Gestor de compras no disponible en el script.');
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }
+            } catch (error) {
+                console.error('Error procesando pago:', error);
+                alert('No se pudo guardar la compra en Firebase: ' + error.message);
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "evento": [
+    {"q":"¿Cuando y donde es el festival?","a":"SUBSONIC Festival 2026 se llevara a cabo del 14 al 17 de Agosto en una explanada a las afueras de la ciudad. Es un festival de 4 dias lleno de musica, arte y experiencias unicas."},
+    {"q":"¿Hay estacionamiento disponible?","a":"Si, contamos con amplio estacionamiento gratuito para todos los asistentes. Buses de ida y vuelta al festival 24/7."},
+    {"q":"¿Se permite ingresar comida y bebida?","a":"No se permite ingresar botellas o recipientes propios. Sin embargo, disponemos de multiples puestos de comida y bebida en el festival con precios accesibles. Contamos con opciones vegetarianas y veganas."},
+    {"q":"¿Que incluye la entrada VIP?","a":"La entrada VIP incluye: acceso prioritario, area VIP con asientos, ducha privada, banos con aire acondicionado, servicio de valet parking, pulsera de identificacion especial y descuento en tienda oficial."},
+    {"q":"¿Hay campamento en el festival?","a":"Si, ofrecemos camping con diferentes opciones desde camping basico hasta glamping. Incluye acceso a banos ducha 24/7 y acceso al festival. Puedes reservar tu camping junto con tu entrada."},
+    {"q":"¿Puedo traer a menores de edad?","a":"Si, menores de 16 anos pueden asistir si van acompanados de un adulto. Ofrecemos entradas especiales para ninos con descuento. Los menores de 6 anos tienen entrada gratuita pero requieren supervisor dedicado."},
+    {"q":"¿Que politicas de seguridad existen en el festival?","a":"Contamos con personal de seguridad profesional y servicio medico disponible 24/7. Realizamos inspecciones de seguridad en todas las entradas. Todos los asistentes deben cumplir con nuestras politicas de seguridad."}
+  ],
+  "fechas": [
+    {"q":"¿Cual es el horario completo del festival?","a":"El festival abre a las 12:00 PM cada dia y se prolonga hasta las 4:00 AM. Los escenarios principales activan a las 2:00 PM y el entretenimiento continua hasta el cierre. Consulta nuestro calendario detallado en la seccion de Calendario."},
+    {"q":"¿Donde puedo ver el cronograma de presentaciones?","a":"El cronograma completo esta disponible en nuestra seccion de Calendario. Incluye horarios de todos los artistas, escenarios, talleres y actividades especiales. Se actualiza regularmente conforme confirmamos mas detalles."},
+    {"q":"¿Puedo asistir solo a un dia del festival?","a":"Si, ofrecemos entradas de un dia individual para cada uno de los 4 dias del festival. Las puedes comprar una vez hayas elegido cual dia deseas asistir. Los precios varian segun el dia elegido."},
+    {"q":"¿Cuando se anuncia el lineup completo?","a":"El lineup se anuncia de forma progresiva. Tenemos confirmados 25+ artistas internacionales. Seguir nuestras redes sociales para estar al tanto de los nuevos anuncios. El lineup final se publicara 2 semanas antes del evento."},
+    {"q":"¿Hay actividades fuera de los horarios principales?","a":"Si, tenemos after parties, DJ sets nocturnos y actividades especiales que se extienden hasta las primeras horas de la manana. Consulta el calendario para ver toda la programacion, incluyendo talleres diurnos y presentaciones sorpresa."},
+    {"q":"¿Hay cambios previstos en las fechas?","a":"Las fechas del festival estan confirmadas para el 14-17 de Agosto 2026. En caso de cambios significativos (cancelacion o reprogramacion), notificaremos a todos los titulares de entradas con 30 dias de anticipacion."}
+  ],
+  "merch": [
+    {"q":"¿Cuales son las opciones de merchandising disponibles?","a":"Ofrecemos una amplia variedad de merchandise incluyendo: camisetas, sudaderas, accesorios, ediciones limitadas y articulos exclusivos. Puedes ver el catalogo completo en nuestra seccion de Merch con todas las opciones de colores y tallas."},
+    {"q":"¿Cual es la politica de devoluciones?","a":"Ofrecemos devoluciones dentro de 30 dias de la compra si el articulo esta sin usar y en condiciones originales. Los articulos de edicion limitada y personalizados no son retornables. Contacta a nuestro equipo de soporte para procesar una devolucion."},
+    {"q":"¿Como se realizan los cambios de talla o color?","a":"Puedes cambiar talla o color sin costo adicional dentro de 15 dias de la compra. El proceso es simple: contacta nuestro servicio al cliente, devuelve el articulo y enviaremos el nuevo. Los gastos de envio de retorno corren por cuenta del cliente."},
+    {"q":"¿Hay envios internacionales?","a":"Si, realizamos envios a nivel internacional. Los costos varian segun la ubicacion. El tiempo de entrega es de 7-15 dias habiles para envios nacionales y 15-30 dias para internacionales. Ofrecemos rastreo en todos los envios."},
+    {"q":"¿Que garantia tiene el merchandise?","a":"Todos nuestros productos incluyen garantia de calidad de 6 meses. Si recibes un articulo defectuoso, lo reemplazaremos sin costo. Reporta defectos dentro de 14 dias de la recepcion proporcionando foto del problema."},
+    {"q":"¿Hay descuentos para compras al por mayor?","a":"Si, ofrecemos descuentos especiales para compras al por mayor (10+ unidades). Contacta a nuestro equipo de ventas B2B para consultar precios y disponibilidad. Podemos personalizar algunos articulos segun tu necesidad."},
+    {"q":"¿Hay ediciones limitadas disponibles?","a":"Si, lanzamos colecciones de edicion limitada regularmente. Estos productos se agotan rapidamente. Suscribete a nuestro boletin para recibir notificaciones cuando esten disponibles. Los articulos limitados no incluyen cambios ni devoluciones."}
+  ],
+  "contactInfo": [
+    {"icon":"📧","title":"Email","value":"info@subsonicfestival.com","isEmail":true},
+    {"icon":"📱","title":"Telefono","value":"+1 (555) 123-4567"},
+    {"icon":"📍","title":"Direccion","value":"Parque Central, Ciudad Principal"},
+    {"icon":"⏰","title":"Horario de Atencion","value":"Lunes a Viernes: 09:00 - 18:00<br>Sabados: 10:00 - 14:00","allowHtml":true}
+  ]
+}

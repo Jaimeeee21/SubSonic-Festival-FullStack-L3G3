@@ -1,0 +1,34 @@
+{
+  "availability": {
+    "madrid": [
+      {"id": "food-truck", "available": 3, "total": 8},
+      {"id": "stall", "available": 5, "total": 10},
+      {"id": "booth", "available": 2, "total": 6},
+      {"id": "popup-store", "available": 1, "total": 3}
+    ],
+    "barcelona": [
+      {"id": "food-truck", "available": 5, "total": 8},
+      {"id": "stall", "available": 8, "total": 10},
+      {"id": "booth", "available": 3, "total": 6},
+      {"id": "popup-store", "available": 2, "total": 3}
+    ],
+    "valencia": [
+      {"id": "food-truck", "available": 2, "total": 8},
+      {"id": "stall", "available": 2, "total": 10},
+      {"id": "booth", "available": 0, "total": 6},
+      {"id": "popup-store", "available": 0, "total": 3}
+    ],
+    "bilbao": [
+      {"id": "food-truck", "available": 6, "total": 8},
+      {"id": "stall", "available": 9, "total": 10},
+      {"id": "booth", "available": 4, "total": 6},
+      {"id": "popup-store", "available": 2, "total": 3}
+    ],
+    "sevilla": [
+      {"id": "food-truck", "available": 4, "total": 8},
+      {"id": "stall", "available": 7, "total": 10},
+      {"id": "booth", "available": 1, "total": 6},
+      {"id": "popup-store", "available": 1, "total": 3}
+    ]
+  }
+}

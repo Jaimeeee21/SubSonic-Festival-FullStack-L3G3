@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - SUBSONIC Festival</title>
+    <script src="config.js"></script>
+    <script src="auth-manager.js?v=8"></script>
+    <script src="navbar-manager.js?v=9"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span class="logo-icon">🎵</span>
+                <span class="logo-text">SUBSONIC</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item dropdown">
+                    <a href="calendario.html" class="nav-link">Calendario</a>
+                    <div class="dropdown-menu">
+                        <a href="calendario.html#agosto" class="dropdown-item">Agosto 2026</a>
+                        <a href="calendario.html#pasado" class="dropdown-item">Ediciones Anteriores</a>
+                        <a href="calendario.html#proximas" class="dropdown-item">Próximos Festivales</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="eventos.html" class="nav-link">Eventos</a>
+                    <div class="dropdown-menu">
+                        <a href="evento-detail.html?id=madrid" class="dropdown-item">Madrid</a>
+                        <a href="evento-detail.html?id=barcelona" class="dropdown-item">Barcelona</a>
+                        <a href="evento-detail.html?id=valencia" class="dropdown-item">Valencia</a>
+                        <a href="evento-detail.html?id=bilbao" class="dropdown-item">Bilbao</a>
+                        <a href="evento-detail.html?id=sevilla" class="dropdown-item">Sevilla</a>
+                        <a href="evento-detail.html?id=malaga" class="dropdown-item">Málaga</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="merch.html" class="nav-link merchandising-btn">Merch</a>
+                    <div class="dropdown-menu">
+                        <a href="merch.html#ropa" class="dropdown-item">Ropa</a>
+                        <a href="merch.html#accesorios" class="dropdown-item">Accesorios</a>
+                        <a href="merch.html#edicion-limitada" class="dropdown-item">Edición Limitada</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-right">
+                <a href="login.html" class="user-icon" title="Iniciar sesion">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M 12 14 C 7.58 14 4 15.79 4 18.5 V 22 H 20 V 18.5 C 20 15.79 16.42 14 12 14 Z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de Preguntas Frecuentes -->
+    <section class="faq-section">
+        <div class="container">
+            <h1>Preguntas Frecuentes</h1>
+            <p class="section-subtitle">Encuentra respuestas a las preguntas más comunes</p>
+
+            <!-- Categorías de FAQ -->
+            <div class="faq-categories">
+                <button class="faq-category-btn active" data-category="evento">🎵 Evento</button>
+                <button class="faq-category-btn" data-category="fechas">📅 Fechas & Calendario</button>
+                <button class="faq-category-btn" data-category="merch">🛍️ Merch</button>
+            </div>
+
+            <!-- SECCIÓN EVENTO -->
+            <div class="faq-container active" id="evento-faq">
+                <h2 class="faq-category-title">Información del Evento</h2>
+                <div id="eventoFaqList"></div>
+            </div>
+
+            <!-- SECCIÓN FECHAS Y CALENDARIO -->
+            <div class="faq-container" id="fechas-faq">
+                <h2 class="faq-category-title">Fechas & Calendario</h2>
+                <div id="fechasFaqList"></div>
+            </div>
+
+            <!-- SECCIÓN MERCH -->
+            <div class="faq-container" id="merch-faq">
+                <h2 class="faq-category-title">Mercancía y Compras</h2>
+                <div id="merchFaqList"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="contacto-section" id="contacto">
+        <div class="container">
+            <h2>Contactanos</h2>
+            <p class="section-subtitle">¿Preguntas? Estamos aquí para ayudarte</p>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info-section">
+                    <div id="contactInfoList"></div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <input type="text" placeholder="Tu Nombre" required>
+                    <input type="email" placeholder="Tu Email" required>
+                    <textarea placeholder="Tu Mensaje" rows="5" required></textarea>
+                    <button type="submit" class="submit-button">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>SUBSONIC</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="#lineup">Lineup</a></li>
+                        <li><a href="#horarios">Horarios</a></li>
+                        <li><a href="#entradas">Entradas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="faq.html">Preguntas Frecuentes</a></li>
+                        <li><a href="#politica">Política de Privacidad</a></li>
+                        <li><a href="#terminos">Términos y Condiciones</a></li>
+                        <li><a href="#faq">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" title="X"><svg class="social-icon-x" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.75-5.913 6.75h-3.308l7.73-8.835L.424 2.25h6.76l4.673 6.169L17.671 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SUBSONIC Festival. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="faq-data.js"></script>
+    <script src="faq-view.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

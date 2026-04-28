@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SUBSONIC Festival</title>
+    
+    <script src="config.js"></script>
+    <script src="cookie-manager.js"></script>
+    <script src="auth-manager.js?v=8"></script>
+    <script src="navbar-manager.js?v=9"></script>
+    <!-- Google Sign-In Library -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span class="logo-icon">🎵</span>
+                <span class="logo-text">SUBSONIC</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item dropdown">
+                    <a href="calendario.html" class="nav-link">Calendario</a>
+                    <div class="dropdown-menu">
+                        <a href="calendario.html#agosto" class="dropdown-item">Agosto 2026</a>
+                        <a href="calendario.html#pasado" class="dropdown-item">Ediciones Anteriores</a>
+                        <a href="calendario.html#proximas" class="dropdown-item">Próximos Festivales</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="eventos.html" class="nav-link">Eventos</a>
+                    <div class="dropdown-menu">
+                        <a href="evento-detail.html?id=madrid" class="dropdown-item">Madrid</a>
+                        <a href="evento-detail.html?id=barcelona" class="dropdown-item">Barcelona</a>
+                        <a href="evento-detail.html?id=valencia" class="dropdown-item">Valencia</a>
+                        <a href="evento-detail.html?id=bilbao" class="dropdown-item">Bilbao</a>
+                        <a href="evento-detail.html?id=sevilla" class="dropdown-item">Sevilla</a>
+                        <a href="evento-detail.html?id=malaga" class="dropdown-item">Málaga</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="merch.html" class="nav-link merchandising-btn">Merch</a>
+                    <div class="dropdown-menu">
+                        <a href="merch.html#ropa" class="dropdown-item">Ropa</a>
+                        <a href="merch.html#accesorios" class="dropdown-item">Accesorios</a>
+                        <a href="merch.html#edicion-limitada" class="dropdown-item">Edición Limitada</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="nav-right">
+                <a href="login.html" class="user-icon" title="Iniciar sesion">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M 12 14 C 7.58 14 4 15.79 4 18.5 V 22 H 20 V 18.5 C 20 15.79 16.42 14 12 14 Z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor de Login/Registro -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div id="authFormsRoot"></div>
+            
+            <!-- Google Sign-In DEBAJO del formulario -->
+            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #333;">
+                <p style="color: #00f0ff; margin-bottom: 15px; font-size: 14px;">O inicia sesión con Google:</p>
+                <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+                    <div id="googleSignInDiv"></div>
+                </div>
+                <div id="userInfoDiv" style="display: none;">
+                    <p id="userEmail" style="color: #00f0ff; margin: 10px 0;"></p>
+                    <p id="userName" style="color: #00f0ff; margin: 10px 0;"></p>
+                    <button onclick="handleLogout()" style="background: #ff006e; color: white; border: none; padding: 8px 16px; border-radius: 5px; cursor: pointer; margin-top: 10px;">Cerrar Sesión</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón Flotante de Contacto -->
+    <a href="faq.html" class="floating-contact-btn" title="Preguntas Frecuentes">?</a>
+
+    <script src="login-data.js?v=7"></script>
+    <script src="login-view.js?v=7"></script>
+    
+    <!-- Google Sign-In Script -->
+    <script>
+        // Esperar a que Google se haya cargado
+        window.onload = function () {
+            // Esperar un poco para que Google se cargue
+            setTimeout(() => {
+                if (typeof google !== 'undefined') {
+                    // Inicializar Google Sign-In
+                    google.accounts.id.initialize({
+                        client_id: '173577391295-0g8g3015bilpdnt8575j7aoaca8scsb5.apps.googleusercontent.com',
+                        callback: handleCredentialResponse
+                    });
+                    
+                    google.accounts.id.renderButton(
+                        document.getElementById('googleSignInDiv'),
+                        { 
+                            theme: 'outline',
+                            size: 'large',
+                            text: 'signin_with'
+                        }
+                    );
+                    
+                    document.getElementById('googleSignInDiv').style.display = 'block';
+                } else {
+                    console.error('Google library no se cargó');
+                }
+            }, 500);
+        };
+
+        async function handleCredentialResponse(response) {
+            console.log('✅ Token de Google recibido');
+            
+            const authManager = window.authManager;
+            if (!authManager) {
+                console.error('authManager no inicializado');
+                return;
+            }
+            
+            const result = await authManager.loginWithGoogle(response.credential);
+            
+            if (result.success) {
+                console.log('✅ Login exitoso con Google');
+                document.getElementById('googleSignInDiv').style.display = 'none';
+                document.getElementById('userInfoDiv').style.display = 'block';
+                
+                const user = authManager.getUser();
+                document.getElementById('userEmail').textContent = '📧 Email: ' + user.email;
+                document.getElementById('userName').textContent = '👤 Usuario: ' + (user.displayName || 'Usuario');
+                
+                // Redirigir a la página de perfil o redirección después de 1 segundo
+                setTimeout(() => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const redirect = urlParams.get('redirect');
+                    window.location.href = redirect ? redirect : 'profile.html';
+                }, 1000);
+            } else {
+                console.error('Error en login:', result.error);
+                alert('Error: ' + result.error);
+            }
+        }
+
+        async function handleLoginSubmit(e) {
+            console.log('🟡 handleLoginSubmit EJECUTADA', e);
+            if (e) e.preventDefault();
+            console.log('📧 Buscando email input...');
+            const email = document.getElementById('loginEmail')?.value;
+            const password = document.getElementById('loginPassword')?.value;
+            
+            console.log('Email:', email, 'Password:', password ? '***' : 'empty');
+            
+            if (!email || !password) {
+                alert('Por favor completa todos los campos');
+                return false;
+            }
+            
+            const authManager = window.authManager;
+            const result = await authManager.loginEmail(email, password);
+            
+            if (result.success) {
+                alert('✅ Iniciaste sesión exitosamente');
+                const urlParams = new URLSearchParams(window.location.search);
+                const redirect = urlParams.get('redirect');
+                if(redirect) {
+                    window.location.href = redirect;
+                } else {
+                    location.reload();
+                }
+            } else {
+                alert('❌ Error: ' + result.error);
+            }
+            
+            return false;
+        }
+
+        async function handleRegisterSubmit(e) {
+            console.log('🟡 handleRegisterSubmit EJECUTADA', e);
+            if (e) e.preventDefault();
+            console.log('👤 Buscando campos de registro...');
+            const name = document.getElementById('registerName')?.value;
+            const email = document.getElementById('registerEmail')?.value;
+            const password = document.getElementById('registerPassword')?.value;
+            const password2 = document.getElementById('registerPassword2')?.value;
+            
+            console.log('Name:', name, 'Email:', email, 'Passwords match:', password === password2);
+            
+            if (!name || !email || !password || !password2) {
+                alert('Por favor completa todos los campos');
+                return false;
+            }
+            
+            if (password !== password2) {
+                alert('Las contraseñas no coinciden');
+                return false;
+            }
+            
+            const authManager = window.authManager;
+            const result = await authManager.register(email, password, name);
+            
+            if (result.success) {
+                alert('✅ Cuenta creada exitosamente');
+                location.reload();
+            } else {
+                alert('❌ Error: ' + result.error);
+            }
+            
+            return false;
+        }
+
+        // Usar delegación de eventos en el contenedor raíz
+        document.addEventListener('submit', function(e) {
+            console.log('🔴 EVENTO SUBMIT CAPTURADO EN:', e.target);
+            const form = e.target;
+            
+            // Detectar si es el formulario de login
+            if (form.closest('#loginForm')) {
+                console.log('🟢 Form submit detectado en #loginForm - PREVENIENDO');
+                e.preventDefault();
+                e.stopPropagation();
+                handleLoginSubmit(e);
+                return false;
+            }
+            
+            // Detectar si es el formulario de registro
+            if (form.closest('#registerForm')) {
+                console.log('🟢 Form submit detectado en #registerForm - PREVENIENDO');
+                e.preventDefault();
+                e.stopPropagation();
+                handleRegisterSubmit(e);
+                return false;
+            }
+        }, true); // Captura en la fase de captura
+
+        function toggleForms() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            if (loginForm && registerForm) {
+                loginForm.classList.toggle('hidden');
+                registerForm.classList.toggle('hidden');
+            }
+        }
+
+        function handleLogout() {
+            authManager.logout();
+            location.reload();
+        }
+    </script>
+    <script src="script.js?v=3"></script>
+</body>
+</html>

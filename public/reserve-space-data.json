@@ -1,0 +1,63 @@
+{
+  "spaces": [
+    {
+      "id": "food-truck",
+      "name": "Food Truck",
+      "icon": "🚚",
+      "size": "3m × 6m",
+      "accent": "#6b21a8",
+      "features": [
+        "✓ Espacio para venta de comida",
+        "✓ Acceso a servicios",
+        "✓ Conexión eléctrica",
+        "✓ Punto de agua"
+      ],
+      "description": "Ideal para food trucks, comedores y negocios gastronómicos"
+    },
+    {
+      "id": "stall",
+      "name": "Puesto Estándar",
+      "icon": "📦",
+      "size": "2m × 2m",
+      "accent": "#00d4ff",
+      "features": [
+        "✓ Espacio compacto",
+        "✓ Ideal para merchandising",
+        "✓ Ubicación central",
+        "✓ Servicios básicos"
+      ],
+      "description": "Perfecto para pequeños negocios y vendedores ambulantes"
+    },
+    {
+      "id": "booth",
+      "name": "Stand Premium",
+      "icon": "⭐",
+      "size": "4m × 4m",
+      "accent": "#ff006e",
+      "features": [
+        "✓ Mayor visibilidad",
+        "✓ Servicios premium",
+        "✓ Mejor ubicación",
+        "✓ Ayuda de personal"
+      ],
+      "description": "Para empresas con mayor demanda y presencia destacada"
+    },
+    {
+      "id": "popup-store",
+      "name": "Pop-up Store",
+      "icon": "🏪",
+      "size": "5m × 5m",
+      "accent": "#10b981",
+      "features": [
+        "✓ Espacio amplio",
+        "✓ Estructura incluida",
+        "✓ Zona de almacén",
+        "✓ Control de temperatura"
+      ],
+      "description": "Tienda temporal con estructura completa para marcas y retailers"
+    }
+  ],
+  "messages": {
+    "soldOut": "Lo sentimos, este espacio está agotado."
+  }
+}

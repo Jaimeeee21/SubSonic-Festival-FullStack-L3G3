@@ -1,0 +1,14 @@
+{
+  "title": "Registro de Empresas Colaboradoras",
+  "subtitle": "¿Es tu empresa parte de SUBSONIC? Registrate aqui",
+  "businessTypes": [
+    { "value": "", "label": "Selecciona un tipo..." },
+    { "value": "food-tracking", "label": "Food Tracking / Comida" },
+    { "value": "beverages", "label": "Bebidas" },
+    { "value": "merchandise", "label": "Merchandising" },
+    { "value": "entertainment", "label": "Entretenimiento" },
+    { "value": "hospitality", "label": "Hospedaje / Hoteleria" },
+    { "value": "transportation", "label": "Transporte" },
+    { "value": "other", "label": "Otro" }
+  ]
+}

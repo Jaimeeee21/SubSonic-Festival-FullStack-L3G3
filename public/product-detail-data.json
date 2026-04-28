@@ -1,0 +1,20 @@
+{
+  "products": {
+    "1": {"name":"Camiseta SUBSONIC Classic","description":"Tela de 100% algodon con logo bordado","price":"$29.99","hasSize":true,"colors":[{"name":"Blanco","hex":"#ffffff","image":"images/camiseta-blanca-subsonic.png"},{"name":"Negro","hex":"#0f0f1e","image":"images/camiseta-negra-subsonic.png"},{"name":"Azul Neon","hex":"#00d4ff","image":"images/camiseta-azul-subsonic.png"}]},
+    "2": {"name":"Hoodie SUBSONIC","description":"Sudadera premium con capucha ajustable","price":"$49.99","hasSize":true,"colors":[{"name":"Negro","hex":"#0f0f1e","image":"images/sudadera-negra-subsonic.png"},{"name":"Gris Oscuro","hex":"#4a4a4a","image":"images/sudadera-grisoscuro-subsonic.png"},{"name":"Purpura","hex":"#8338ec","image":"images/sudadera-morado-subsonic.png"}]},
+    "3": {"name":"Pantalones SUBSONIC Jogger","description":"Comodidad total con diseno moderno","price":"$39.99","hasSize":true,"colors":[{"name":"Negro","hex":"#0f0f1e","image":"images/pantalon-negro-subsonic.png"},{"name":"Gris","hex":"#808080","image":"images/pantalon-gris-subsonic.png"}]},
+    "4": {"name":"Chaqueta Bomber SUBSONIC","description":"Estilo urbano con detalles bordados","price":"$69.99","hasSize":true,"colors":[{"name":"Negro","hex":"#0f0f1e","image":"images/bomber-negra-subsonic.png"},{"name":"Rosa","hex":"#ff006e","image":"images/bomber-rosa-subsonic.png"}]},
+    "5": {"name":"Gorra SUBSONIC Trucker","description":"Gorra ajustable con malla trasera","price":"$19.99","hasSize":false,"colors":[{"name":"Negro","hex":"#0f0f1e","image":"images/gorra-negra-subsonic.png"},{"name":"Azul","hex":"#00d4ff","image":"images/gorra-azul-subsonic.png"}]},
+    "6": {"name":"Mochila SUBSONIC Urban","description":"Compartimentos multiples y resistente","price":"$44.99","hasSize":false,"colors":[{"name":"Negro","hex":"#0f0f1e","image":"images/mochila-negro-subsonic.png"},{"name":"Gris","hex":"#666666","image":"images/mochila-gris-subsonic.png"}]},
+    "7": {"name":"Botella SUBSONIC Hydro","description":"Termica deportiva con logo grabado","price":"$24.99","hasSize":false,"colors":[{"name":"Negro","hex":"#0f0f1e","image":"images/botella-negra-subsonic.png"},{"name":"Plateado","hex":"#c0c0c0","image":"images/botella-gris-subsonic.png"}]},
+    "8": {"name":"Pulsera SUBSONIC LED","description":"Pulsera LED interactiva para festivales","price":"$14.99","hasSize":false,"colors":[{"name":"Azul Neon","hex":"#00d4ff","image":"images/pulsera-azulneon-subsonic.png"},{"name":"Rosa Neon","hex":"#ff006e","image":"images/pulsera-rosaneon-subsonic.png"}]},
+    "9": {"name":"Vinilo SUBSONIC 2026","description":"Vinilo de edicion limitada numerado con caratula de lujo","price":"$59.99","hasSize":false,"colors":[{"name":"Negro","hex":"#0f0f1e","image":"images/vinilo-subsonic.png"}]},
+    "10": {"name":"Pase VIP Metalizado","description":"Pase de coleccionista metalizado con cadena incluida","price":"$34.99","hasSize":false,"colors":[{"name":"Plateado","hex":"#c0c0c0","image":"images/pasevip-subsonic.png"}]},
+    "11": {"name":"Edicion Especial Box Set","description":"Coleccion premium con camiseta, vinilo y accesorios exclusivos","price":"$129.99","hasSize":false,"colors":[{"name":"Negro","hex":"#0f0f1e","image":"images/boxset-subsonic.png"}]}
+  },
+  "messages": {
+    "sizeRequired": "Por favor selecciona una talla",
+    "added": "✓ Producto agregado al carrito",
+    "notFound": "Producto no encontrado"
+  }
+}

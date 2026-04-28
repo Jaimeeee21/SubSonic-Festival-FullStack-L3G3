@@ -1,0 +1,33 @@
+# Credentials and secrets
+subsonic-festival-*.json
+*.json.bak
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.Python
+
+# Database
+*.db
+*.sqlite
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log

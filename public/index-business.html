@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBSONIC - Panel Empresa</title>
+    <script src="config.js"></script>
+    <script src="cookie-manager.js"></script>
+    <script src="auth-manager.js?v=8"></script>
+    <script src="navbar-manager.js?v=9"></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="display:flex;flex-direction:column;min-height:100vh;">
+    <!-- Navegación (versión Empresa) -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <span class="logo-icon">🎵</span>
+                <span class="logo-text">SUBSONIC</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item"><a href="calendario.html" class="nav-link">Calendario</a></li>
+                <li class="nav-item"><a href="eventos.html" class="nav-link">Eventos</a></li>
+                <li class="nav-item"><a href="merch.html" class="nav-link">Merch</a></li>
+            </ul>
+
+            <div id="businessNavbarInfo" style="display:flex;align-items:center;gap:12px;margin-left:auto;"></div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Empresa -->
+
+    <section class="hero" style="min-height:40vh;display:flex;align-items:center;justify-content:center;">
+        <div class="container" style="text-align:center;color:var(--light-text);">
+
+            <div id="businessHeroContent"></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Contenido principal: resumen rápido de la empresa y opciones -->
+    <section class="container" style="padding:40px 20px;">
+        <div id="businessSummaryCards" style="display:flex;gap:24px;flex-wrap:wrap;"></div>
+    </section>
+
+    
+    <a href="faq.html" class="floating-contact-btn" title="Preguntas Frecuentes">?</a>
+
+    <div style="flex:1;"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>SUBSONIC Festival</h4>
+                    <p>La mejor experiencia musical del año</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html#lineup">Lineup</a></li>
+                        <li><a href="index.html#info">Información</a></li>
+                        <li><a href="index.html#entradas">Entradas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" title="X"><span class="social-icon-x-wrapper"><svg class="social-icon-x" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.75-5.913 6.75h-3.308l7.73-8.835L.424 2.25h6.76l4.673 6.169L17.671 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SUBSONIC Festival. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index-business-data.js"></script>
+    <script src="index-business-view.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

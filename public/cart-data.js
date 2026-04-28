@@ -1,0 +1,12 @@
+window.CART_DATA = {
+  "labels": {
+    "emptyCart": "Tu carrito esta vacio",
+    "itemPricePrefix": "Precio:",
+    "sizePrefix": "- Talla:",
+    "singleSize": "Unica",
+    "freeShipping": "GRATIS",
+    "emptyCheckout": "Tu carrito esta vacio"
+  },
+  "checkoutUrl": "checkout.html"
+}
+
