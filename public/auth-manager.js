@@ -12,13 +12,31 @@ class AuthManager {
 
   /**
    * Decodificar JWT de Google (sin verificación, solo para cliente)
+   * Maneja correctamente caracteres UTF-8
    */
   decodeGoogleToken(token) {
     try {
       const parts = token.split('.');
       if (parts.length !== 3) throw new Error('Token inválido');
       
-      const decoded = JSON.parse(atob(parts[1]));
+      // Decodificación correcta de Base64 URL-safe con soporte UTF-8
+      let payload = parts[1];
+      // Agregar padding si es necesario
+      const padding = 4 - (payload.length % 4);
+      if (padding !== 4) {
+        payload += '='.repeat(padding);
+      }
+      
+      // Decodificar Base64 a string con soporte UTF-8
+      const binaryString = atob(payload);
+      const bytes = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      const decoder = new TextDecoder('utf-8');
+      const decodedString = decoder.decode(bytes);
+      
+      const decoded = JSON.parse(decodedString);
       return decoded;
     } catch (error) {
       console.error('Error decodificando token:', error);

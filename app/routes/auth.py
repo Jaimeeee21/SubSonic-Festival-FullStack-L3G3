@@ -5,7 +5,7 @@ from fastapi import APIRouter, HTTPException, status, Header, Depends
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-from app.utils.auth import verify_firebase_token
+from app.utils.auth import verify_firebase_token, decode_google_token
 from app.utils.firebase import get_firestore
 from app.utils.database import get_db
 from app.DTOs.auth_dto import LoginResponse, VerifyTokenResponse
