@@ -88,7 +88,7 @@ def registrar_empresa(data: RegistroEmpresaRequest, db: Session = Depends(get_db
         try:
             firestore_db = get_firestore()
             empresa_id = str(uuid.uuid4())
-            
+
             empresa_firestore = {
                 'id': empresa_id,
                 'usuario_id': usuario.id,
@@ -103,12 +103,28 @@ def registrar_empresa(data: RegistroEmpresaRequest, db: Session = Depends(get_db
                 'estado': 'activa',
                 'fecha_registro': datetime.utcnow().isoformat()
             }
-            
-            # Guardar en colección "empresas"
+
+            # Guardar empresa en colección "empresas"
             firestore_db.collection('empresas').document(empresa_id).set(empresa_firestore)
             print(f"✅ Empresa guardada en Firestore: {empresa_id}")
+
+            # IMPORTANTE: También guardar el usuario en Firestore (para que pueda acceder a su perfil)
+            usuario_firestore = {
+                'id': usuario.id,
+                'nombre': usuario.nombre,
+                'email': usuario.email,
+                'es_empresa': True,
+                'empresa_id': empresa_id,
+                'empresa_nombre': data.nombre,
+                'empresa_cif': data.cif,
+                'tipo_empresa': data.tipo_empresa,
+                'created_at': datetime.utcnow().isoformat()
+            }
+            firestore_db.collection('usuarios').document(usuario.id).set(usuario_firestore)
+            print(f"✅ Usuario empresa guardado en Firestore: {usuario.id}")
+
         except Exception as firebase_error:
-            print(f"⚠️ Advertencia: No se pudo guardar empresa en Firestore: {str(firebase_error)}")
+            print(f"⚠️ Advertencia: No se pudo guardar en Firestore: {str(firebase_error)}")
             # No lanzar excepción, ya que la empresa se guardó en SQL
         
         return {

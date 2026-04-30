@@ -5,7 +5,7 @@
 
 class AdminAPI {
     constructor() {
-        this.API_BASE = 'http://localhost:8000';
+        this.API_BASE = 'http://pil3g3.duckdns.org';
         this.adminToken = localStorage.getItem('admin_token');
     }
 

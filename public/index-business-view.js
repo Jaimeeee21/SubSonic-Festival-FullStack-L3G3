@@ -42,7 +42,7 @@ async function cargarEmpresaYReservas() {
 // Cargar información real de la empresa
 async function cargarInfoEmpresa(usuarioId) {
     try {
-        const response = await fetch(`http://localhost:8000/api/usuarios/${usuarioId}`);
+        const response = await fetch(`http://pil3g3.duckdns.org/api/usuarios/${usuarioId}`);
         if (response.ok) {
             const usuario = await response.json();
             mostrarInfoEmpresa(usuario);
@@ -113,7 +113,7 @@ async function loadReservasEspacios() {
             return;
         }
 
-        const response = await fetch(`http://localhost:8000/api/reservas-espacios/usuario/${usuarioId}`, {
+        const response = await fetch(`http://pil3g3.duckdns.org/api/reservas-espacios/usuario/${usuarioId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -229,7 +229,7 @@ function cancelarReserva(reservaId) {
             return;
         }
 
-        fetch('http://localhost:8000/api/reservas-espacios/' + reservaId + '/cancelar', {
+        fetch('http://pil3g3.duckdns.org/api/reservas-espacios/' + reservaId + '/cancelar', {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,

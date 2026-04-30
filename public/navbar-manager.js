@@ -128,18 +128,38 @@ class NavbarManager {
      */
     handleLogout() {
         if (confirm('¿Estás seguro de que deseas cerrar sesión?')) {
-            console.log('🚪 [NavbarManager] Logout ejecutado');
+            console.log('🚪 [NavbarManager] Logout ejecutado - limpiando TODO');
+
+            // Limpiar localStorage - Autenticación antigua
             localStorage.removeItem('userId');
             localStorage.removeItem('userName');
             localStorage.removeItem('userPhoto');
             localStorage.removeItem('userEmail');
             localStorage.removeItem('firebase_token');
             localStorage.removeItem('firebase_user');
+
+            // Limpiar localStorage - Autenticación nueva (empresas)
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('empresa_nombre');
+            localStorage.removeItem('empresa_id');
+            localStorage.removeItem('usuario_id');
+            localStorage.removeItem('isEmpresa');
+            localStorage.removeItem('empresa_email_recordada');
+
+            // Limpiar sessionStorage
             sessionStorage.removeItem('userId');
             sessionStorage.removeItem('userName');
             sessionStorage.removeItem('userPhoto');
             sessionStorage.removeItem('userEmail');
-            
+            sessionStorage.removeItem('auth_token');
+            sessionStorage.removeItem('empresa_id');
+            sessionStorage.removeItem('isEmpresa');
+
+            // Limpiar caché global
+            sessionStorage.clear();
+
+            console.log('✅ Todos los datos de sesión han sido limpiados');
+
             // Redirigir a login
             window.location.href = 'login.html';
         }

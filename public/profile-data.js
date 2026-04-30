@@ -5,7 +5,7 @@
 
 class ProfileDataManager {
     constructor() {
-        this.apiBaseUrl = window.API_BASE_URL || 'http://localhost:8000/api';
+        this.apiBaseUrl = window.API_BASE_URL || 'http://pil3g3.duckdns.org/api';
         this.currentUserId = this.getUserIdFromStorage();
         this.currentUser = null;
         this.userTickets = [];

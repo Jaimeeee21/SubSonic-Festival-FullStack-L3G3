@@ -112,7 +112,7 @@ async function handleEmpresaRegistro(e) {
     submitBtn.textContent = '⏳ Registrando...';
     
     try {
-        const response = await fetch('http://localhost:8000/api/empresas/registro', {
+        const response = await fetch('http://pil3g3.duckdns.org/api/empresas/registro', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

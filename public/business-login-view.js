@@ -54,7 +54,7 @@ async function handleEmpresaLogin(e) {
     
     try {
         // Hacer login al endpoint de autenticación para empresas
-        const response = await fetch('http://localhost:8000/api/auth/login-email-business', {
+        const response = await fetch('http://pil3g3.duckdns.org/api/auth/login-email-business', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

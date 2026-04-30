@@ -98,9 +98,14 @@ def crear_reserva_espacio(
         }
 
         # Guardar en Firestore
-        firestore_db.collection('reservas_espacios').document(reserva_id).set(reserva_data)
-
-        print(f"✅ Reserva guardada en Firestore: {reserva_id}")
+        try:
+            firestore_db.collection('reservas_espacios').document(reserva_id).set(reserva_data)
+            print(f"✅ Reserva guardada en Firestore: {reserva_id}")
+        except Exception as firebase_error:
+            print(f"🔥 Firebase Error al guardar reserva: {str(firebase_error)}")
+            print(f"   Tipo de error: {type(firebase_error).__name__}")
+            print(f"   Intenta revisar las reglas de seguridad de Firestore")
+            raise
 
         return {
             "success": True,

@@ -8,13 +8,19 @@ from firebase_admin import credentials, firestore
 from datetime import datetime
 from pathlib import Path
 
-# Inicializar Firebase
-cred_path = Path(__file__).parent / "subsonic-festival-56216-3767f772323c.json"
-print(f"🔍 Buscando credenciales en: {cred_path}")
+# Función para encontrar credenciales de Firebase automáticamente
+def get_firebase_credentials():
+    root_dir = Path(__file__).parent
+    json_files = list(root_dir.glob("*subsonic*.json"))
+    if not json_files:
+        json_files = list(root_dir.glob("*.json"))
+    if json_files:
+        return json_files[0]
+    raise FileNotFoundError("No se encontró archivo de credenciales JSON en la carpeta raíz")
 
-if not cred_path.exists():
-    print(f"❌ NO ENCONTRADO: {cred_path}")
-    exit(1)
+# Inicializar Firebase
+cred_path = get_firebase_credentials()
+print(f"🔍 Buscando credenciales en: {cred_path}")
 
 try:
     cred = credentials.Certificate(str(cred_path))

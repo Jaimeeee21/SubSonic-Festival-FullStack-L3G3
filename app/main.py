@@ -30,7 +30,7 @@ def create_app():
     # Configurar CORS para permitir requests desde el frontend
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["http://localhost:3000", "http://localhost:5500", "*"],  # En producción especificar dominio
+        allow_origins=["http://pil3g3.duckdns.org", "http://localhost:3000", "http://localhost:5500", "*"],  # En producción especificar dominio
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
@@ -57,7 +57,7 @@ def create_app():
         index_path = frontend_path / "index.html"
         if index_path.exists():
             return FileResponse(index_path)
-        return {"message": "SubSonic Festival API - Abre http://localhost:8000/docs para la documentación"}
+        return {"message": "SubSonic Festival API - Abre http://pil3g3.duckdns.org/docs para la documentación"}
     
     # Rutas para servir directamente archivos HTML del frontend
     @app.get("/{file_path:path}")

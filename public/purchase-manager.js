@@ -5,7 +5,7 @@
 
 class PurchaseManager {
     constructor() {
-        this.apiBaseUrl = window.API_BASE_URL || 'http://localhost:8000/api';
+        this.apiBaseUrl = window.API_BASE_URL || 'http://pil3g3.duckdns.org/api';
     }
 
     /**

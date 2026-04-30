@@ -3,7 +3,7 @@
  * 
  * Cambiar 'USE_BACKEND' a true/false para intercambiar entre backend real y mock data
  * 
- * true  = Usar API del backend (http://localhost:8000)
+ * true  = Usar API del backend (http://pil3g3.duckdns.org)
  * false = Usar JSON mock local (compatible con versión actual)
  */
 
@@ -12,7 +12,7 @@ const CONFIG = {
     USE_BACKEND: true,  // true = Backend real | false = Mock local
     // =====================================
     
-    API_BASE_URL: "http://localhost:8000/api",
+    API_BASE_URL: "http://pil3g3.duckdns.org/api",
     
     // Timeouts y reintentos
     FETCH_TIMEOUT: 5000,

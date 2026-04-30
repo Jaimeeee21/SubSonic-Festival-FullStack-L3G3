@@ -187,14 +187,36 @@ class AuthManager {
     }
   }
 
-  
+
   logout() {
+    // Limpiar TODOS los items de autenticación
     localStorage.removeItem('firebase_token');
     localStorage.removeItem('firebase_user');
+    localStorage.removeItem('auth_token');
+    localStorage.removeItem('empresa_nombre');
+    localStorage.removeItem('usuario_id');
+    localStorage.removeItem('empresa_id');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userPhoto');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('isEmpresa');
+    localStorage.removeItem('empresa_email_recordada');
+
+    // Limpiar sessionStorage también
+    sessionStorage.clear();
+
+    // Limpiar variables globales
     this.token = null;
     this.user = null;
     this.isAuthenticated = false;
-    console.log('✅ Sesión cerrada');
+
+    // Limpiar caché de datos de empresa
+    if (window.currentEmpresa) {
+      window.currentEmpresa = null;
+    }
+
+    console.log('✅ Sesión completamente cerrada - localStorage limpiado');
   }
 
   /**

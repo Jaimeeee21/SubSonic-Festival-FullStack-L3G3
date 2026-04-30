@@ -100,7 +100,7 @@ function loadEmpresaNombre() {
                 };
 
                 // Realizar solicitud POST al backend
-                const response = await fetch('http://localhost:8000/api/reservas-espacios', {
+                const response = await fetch('http://pil3g3.duckdns.org/api/reservas-espacios', {
                     method: 'POST',
                     headers: {
                         'Authorization': `Bearer ${usuarioId}`,
@@ -205,7 +205,7 @@ async function loadFromBackend() {
     console.log('Cargando datos desde BACKEND...');
     
     // TODO: Configurar los endpoints del backend según sea necesario
-    const backendUrl = 'http://localhost:3000/api'; // Cambiar por URL real del backend
+    const backendUrl = 'http://pil3g3.duckdns.org/api'; // Cambiar por URL real del backend
     
     // Ejemplo de estructura esperada desde el backend:
     // GET /api/eventos - devuelve eventos
